@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-mlbstatsviz-dev-92310-authRole",
+      "UnauthRoleArn": "arn:aws:iam::706698525731:role/amplify-mlbstatsviz-dev-92310-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::706698525731:role/amplify-mlbstatsviz-dev-92310-authRole",
+      "Region": "us-west-2",
+      "DeploymentBucketName": "amplify-mlbstatsviz-dev-92310-deployment",
+      "UnauthRoleName": "amplify-mlbstatsviz-dev-92310-unauthRole",
+      "StackName": "amplify-mlbstatsviz-dev-92310",
+      "StackId": "arn:aws:cloudformation:us-west-2:706698525731:stack/amplify-mlbstatsviz-dev-92310/b3289730-4fa6-11ec-9451-06bd1707f7ab",
+      "AmplifyAppId": "d32kpboxvg647v"
+    }
+  }
+}
