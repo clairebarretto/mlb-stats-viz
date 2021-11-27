@@ -17,6 +17,10 @@
           "deploymentBucketName": "amplify-mlbstatsviz-dev-92310-deployment",
           "s3Key": "amplify-builds/GetStadiumDimensions-32364d594c7162384559-build.zip"
         }
+      },
+      "auth": {
+        "mlbstatsviz2a5939be": {},
+        "true": {}
       }
     }
   }
