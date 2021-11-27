@@ -1,0 +1,35 @@
+{
+  "paths": [
+    {
+      "name": "/team/{team}/stadium",
+      "lambdaFunction": "GetStadiumDimensions",
+      "privacy": {
+        "open": true
+      },
+      "policyResourceName": "/team/*/stadium"
+    }
+  ],
+  "resourceName": "GetStadiumDimensions",
+  "apiName": "GetStadiumDimensions",
+  "functionArns": [
+    {
+      "lambdaFunction": "GetStadiumDimensions"
+    }
+  ],
+  "privacy": {
+    "auth": 0,
+    "unauth": 0,
+    "authRoleName": "amplify-mlbstatsviz-dev-92310-authRole",
+    "unAuthRoleName": "amplify-mlbstatsviz-dev-92310-unauthRole"
+  },
+  "dependsOn": [
+    {
+      "category": "function",
+      "resourceName": "GetStadiumDimensions",
+      "attributes": [
+        "Name",
+        "Arn"
+      ]
+    }
+  ]
+}

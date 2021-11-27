@@ -10,6 +10,14 @@
       "StackName": "amplify-mlbstatsviz-dev-92310",
       "StackId": "arn:aws:cloudformation:us-west-2:706698525731:stack/amplify-mlbstatsviz-dev-92310/b3289730-4fa6-11ec-9451-06bd1707f7ab",
       "AmplifyAppId": "d32kpboxvg647v"
+    },
+    "categories": {
+      "function": {
+        "GetStadiumDimensions": {
+          "deploymentBucketName": "amplify-mlbstatsviz-dev-92310-deployment",
+          "s3Key": "amplify-builds/GetStadiumDimensions-32364d594c7162384559-build.zip"
+        }
+      }
     }
   }
 }
