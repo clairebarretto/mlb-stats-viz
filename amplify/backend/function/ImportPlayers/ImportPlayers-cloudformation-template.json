@@ -15,9 +15,6 @@
     },
     "s3Key": {
       "Type": "String"
-    },
-    "secretsPathAmplifyAppId": {
-      "Type": "String"
     }
   },
   "Conditions": {
@@ -50,12 +47,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "GetStadiumDimensions",
+            "ImportPlayers",
             {
               "Fn::Join": [
                 "",
                 [
-                  "GetStadiumDimensions",
+                  "ImportPlayers",
                   "-",
                   {
                     "Ref": "env"
@@ -72,28 +69,6 @@
             },
             "REGION": {
               "Ref": "AWS::Region"
-            },
-            "MLB_CLUSTER_ARN": {
-              "Fn::Join": [
-                "",
-                [
-                  {
-                    "Fn::Sub": [
-                      "/amplify/${appId}/${env}/AMPLIFY_${functionName}_",
-                      {
-                        "appId": {
-                          "Ref": "secretsPathAmplifyAppId"
-                        },
-                        "env": {
-                          "Ref": "env"
-                        },
-                        "functionName": "GetStadiumDimensions"
-                      }
-                    ]
-                  },
-                  "MLB_CLUSTER_ARN"
-                ]
-              ]
             }
           }
         },
@@ -114,12 +89,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "mlbstatsvizLambdaRolecdb862e4",
+            "mlbstatsvizLambdaRole61b4f978",
             {
               "Fn::Join": [
                 "",
                 [
-                  "mlbstatsvizLambdaRolecdb862e4",
+                  "mlbstatsvizLambdaRole61b4f978",
                   "-",
                   {
                     "Ref": "env"
@@ -189,98 +164,6 @@
           ]
         }
       }
-    },
-    "AmplifyFunctionSecretsPolicy": {
-      "Type": "AWS::IAM::Policy",
-      "Properties": {
-        "PolicyName": "amplify-function-secrets-policy",
-        "Roles": [
-          {
-            "Ref": "LambdaExecutionRole"
-          }
-        ],
-        "PolicyDocument": {
-          "Version": "2012-10-17",
-          "Statement": [
-            {
-              "Effect": "Allow",
-              "Action": [
-                "ssm:GetParameter",
-                "ssm:GetParameters"
-              ],
-              "Resource": {
-                "Fn::Join": [
-                  "",
-                  [
-                    "arn:aws:ssm:",
-                    {
-                      "Ref": "AWS::Region"
-                    },
-                    ":",
-                    {
-                      "Ref": "AWS::AccountId"
-                    },
-                    ":parameter",
-                    {
-                      "Fn::Sub": [
-                        "/amplify/${appId}/${env}/AMPLIFY_${functionName}_",
-                        {
-                          "appId": {
-                            "Ref": "secretsPathAmplifyAppId"
-                          },
-                          "env": {
-                            "Ref": "env"
-                          },
-                          "functionName": "GetStadiumDimensions"
-                        }
-                      ]
-                    },
-                    "*"
-                  ]
-                ]
-              }
-            }
-          ]
-        }
-      },
-      "DependsOn": [
-        "LambdaExecutionRole"
-      ]
-    },
-    "CustomLambdaExecutionPolicy": {
-      "Type": "AWS::IAM::Policy",
-      "Properties": {
-        "PolicyName": "custom-lambda-execution-policy",
-        "PolicyDocument": {
-          "Version": "2012-10-17",
-          "Statement": [
-            {
-              "Action": [
-                "rds-data:ExecuteStatement"
-              ],
-              "Resource": [
-                "arn:aws:rds:us-west-2:706698525731:cluster:mlb-stats-viz"
-              ],
-              "Effect": "Allow"
-            },
-            {
-              "Action": [
-                "secretsmanager:GetSecretValue"
-              ],
-              "Resource": [
-                "arn:aws:secretsmanager:us-west-2:706698525731:secret:rds-db-credentials/cluster-NLZRMXYZHC3M4RSUC5AZDILPAY/admin-ZBaoIB"
-              ],
-              "Effect": "Allow"
-            }
-          ]
-        },
-        "Roles": [
-          {
-            "Ref": "LambdaExecutionRole"
-          }
-        ]
-      },
-      "DependsOn": "LambdaExecutionRole"
     }
   },
   "Outputs": {

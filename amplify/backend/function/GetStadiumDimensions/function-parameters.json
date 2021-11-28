@@ -1,3 +1,7 @@
 {
-  "lambdaLayers": []
+  "lambdaLayers": [],
+  "secretNames": [
+    "MLB_CLUSTER_ARN"
+  ],
+  "permissions": {}
 }

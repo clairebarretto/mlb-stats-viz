@@ -1,6 +1,18 @@
 [
   {
-    "Action": [],
-    "Resource": []
+    "Action": [
+      "rds-data:ExecuteStatement",
+    ],
+    "Resource": [
+      "arn:aws:rds:us-west-2:706698525731:cluster:mlb-stats-viz"
+    ]
+  },
+  {
+    "Action": [
+      "secretsmanager:GetSecretValue"
+    ],
+    "Resource": [
+      "arn:aws:secretsmanager:us-west-2:706698525731:secret:rds-db-credentials/cluster-NLZRMXYZHC3M4RSUC5AZDILPAY/admin-ZBaoIB"
+    ]
   }
 ]

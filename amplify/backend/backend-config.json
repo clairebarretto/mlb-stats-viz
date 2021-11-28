@@ -3,9 +3,25 @@
     "GetStadiumDimensions": {
       "build": true,
       "providerPlugin": "awscloudformation",
-      "service": "Lambda"
+      "service": "Lambda",
+      "dependsOn": []
     },
     "ImportStadiumDimensions": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "ImportPlayers": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "ImportPlayerPhotos": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "GetPlayer": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
@@ -19,6 +35,20 @@
         {
           "category": "function",
           "resourceName": "GetStadiumDimensions",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        }
+      ]
+    },
+    "GetPlayer": {
+      "service": "API Gateway",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "GetPlayer",
           "attributes": [
             "Name",
             "Arn"
@@ -56,11 +86,5 @@
       }
     }
   },
-  "storage": {
-    "StatsViz": {
-      "service": "S3",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": []
-    }
-  }
+  "storage": {}
 }
