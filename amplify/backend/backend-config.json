@@ -16,15 +16,16 @@
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     },
-    "ImportPlayerPhotos": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda"
-    },
     "GetPlayer": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
+    },
+    "ImportPlayerPhotos": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": []
     }
   },
   "api": {
@@ -86,5 +87,11 @@
       }
     }
   },
-  "storage": {}
+  "storage": {
+    "images": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": []
+    }
+  }
 }

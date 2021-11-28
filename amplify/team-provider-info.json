@@ -15,16 +15,12 @@
       "function": {
         "GetStadiumDimensions": {
           "deploymentBucketName": "amplify-mlbstatsviz-dev-92310-deployment",
-          "s3Key": "amplify-builds/GetStadiumDimensions-6b4e2f4b6b6f41496e4e-build.zip",
+          "s3Key": "amplify-builds/GetStadiumDimensions-66775771632b31454371-build.zip",
           "secretsPathAmplifyAppId": "d32kpboxvg647v"
         },
         "ImportStadiumDimensions": {
           "deploymentBucketName": "amplify-mlbstatsviz-dev-92310-deployment",
           "s3Key": "amplify-builds/ImportStadiumDimensions-4a386774674439557274-build.zip"
-        },
-        "ImportPlayerPhotos": {
-          "deploymentBucketName": "amplify-mlbstatsviz-dev-92310-deployment",
-          "s3Key": "amplify-builds/ImportPlayerPhotos-5643383474377a514b55-build.zip"
         },
         "ImportPlayers": {
           "deploymentBucketName": "amplify-mlbstatsviz-dev-92310-deployment",

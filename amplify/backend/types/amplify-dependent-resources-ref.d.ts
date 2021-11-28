@@ -18,13 +18,13 @@ export type AmplifyDependentResourcesAttributes = {
             "Region": "string",
             "LambdaExecutionRole": "string"
         },
-        "ImportPlayerPhotos": {
+        "GetPlayer": {
             "Name": "string",
             "Arn": "string",
             "Region": "string",
             "LambdaExecutionRole": "string"
         },
-        "GetPlayer": {
+        "ImportPlayerPhotos": {
             "Name": "string",
             "Arn": "string",
             "Region": "string",
@@ -52,6 +52,12 @@ export type AmplifyDependentResourcesAttributes = {
             "UserPoolName": "string",
             "AppClientIDWeb": "string",
             "AppClientID": "string"
+        }
+    },
+    "storage": {
+        "images": {
+            "BucketName": "string",
+            "Region": "string"
         }
     }
 }
