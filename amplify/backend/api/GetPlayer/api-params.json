@@ -1,0 +1,35 @@
+{
+  "paths": [
+    {
+      "name": "/player/{player-id}",
+      "lambdaFunction": "GetPlayer",
+      "privacy": {
+        "open": true
+      },
+      "policyResourceName": "/player/*"
+    }
+  ],
+  "resourceName": "GetPlayer",
+  "apiName": "GetPlayer",
+  "functionArns": [
+    {
+      "lambdaFunction": "GetPlayer"
+    }
+  ],
+  "privacy": {
+    "auth": 0,
+    "unauth": 0,
+    "authRoleName": "amplify-mlbstatsviz-dev-92310-authRole",
+    "unAuthRoleName": "amplify-mlbstatsviz-dev-92310-unauthRole"
+  },
+  "dependsOn": [
+    {
+      "category": "function",
+      "resourceName": "GetPlayer",
+      "attributes": [
+        "Name",
+        "Arn"
+      ]
+    }
+  ]
+}

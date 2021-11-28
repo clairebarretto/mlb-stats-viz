@@ -29,6 +29,10 @@
         "ImportPlayers": {
           "deploymentBucketName": "amplify-mlbstatsviz-dev-92310-deployment",
           "s3Key": "amplify-builds/ImportPlayers-655a50396c4a667a4138-build.zip"
+        },
+        "GetPlayer": {
+          "deploymentBucketName": "amplify-mlbstatsviz-dev-92310-deployment",
+          "s3Key": "amplify-builds/GetPlayer-724a7536765462384b41-build.zip"
         }
       },
       "auth": {
