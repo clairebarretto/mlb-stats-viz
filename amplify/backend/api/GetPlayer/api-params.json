@@ -1,35 +1,55 @@
 {
-  "paths": [
-    {
-      "name": "/player/{player-id}",
-      "lambdaFunction": "GetPlayer",
-      "privacy": {
-        "open": true
-      },
-      "policyResourceName": "/player/*"
-    }
-  ],
-  "resourceName": "GetPlayer",
-  "apiName": "GetPlayer",
-  "functionArns": [
-    {
-      "lambdaFunction": "GetPlayer"
-    }
-  ],
-  "privacy": {
-    "auth": 0,
-    "unauth": 0,
-    "authRoleName": "amplify-mlbstatsviz-dev-92310-authRole",
-    "unAuthRoleName": "amplify-mlbstatsviz-dev-92310-unauthRole"
-  },
-  "dependsOn": [
-    {
-      "category": "function",
-      "resourceName": "GetPlayer",
-      "attributes": [
-        "Name",
-        "Arn"
-      ]
-    }
-  ]
+    "paths": [
+        {
+            "name": "/player/{player-id}",
+            "lambdaFunction": "GetPlayer",
+            "privacy": {
+                "open": true
+            },
+            "policyResourceName": "/player/*"
+        },
+        {
+            "name": "/player/{player-id}/statcast",
+            "lambdaFunction": "GetStatcastData",
+            "privacy": {
+                "open": true
+            },
+            "policyResourceName": "/player/*/statcast"
+        }
+    ],
+    "resourceName": "GetPlayer",
+    "apiName": "GetPlayer",
+    "functionArns": [
+        {
+            "lambdaFunction": "GetPlayer"
+        },
+        {
+            "lambdaFunction": "GetStatcastData"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "amplify-mlbstatsviz-dev-92310-authRole",
+        "unAuthRoleName": "amplify-mlbstatsviz-dev-92310-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "GetPlayer",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        },
+        {
+            "category": "function",
+            "resourceName": "GetStatcastData",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ],
+    "uuid": "61c2195b"
 }

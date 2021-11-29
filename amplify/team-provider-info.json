@@ -24,16 +24,30 @@
         },
         "ImportPlayers": {
           "deploymentBucketName": "amplify-mlbstatsviz-dev-92310-deployment",
-          "s3Key": "amplify-builds/ImportPlayers-655a50396c4a667a4138-build.zip"
+          "s3Key": "amplify-builds/ImportPlayers-51456a594d5754476b75-build.zip"
         },
         "GetPlayer": {
           "deploymentBucketName": "amplify-mlbstatsviz-dev-92310-deployment",
           "s3Key": "amplify-builds/GetPlayer-724a7536765462384b41-build.zip"
+        },
+        "GetStatcastData": {
+          "deploymentBucketName": "amplify-mlbstatsviz-dev-92310-deployment",
+          "s3Key": "amplify-builds/GetStatcastData-67313271326f322b7279-build.zip"
+        },
+        "ImportPlayerPhotos": {
+          "deploymentBucketName": "amplify-mlbstatsviz-dev-92310-deployment",
+          "s3Key": "amplify-builds/ImportPlayerPhotos-7a66467049494f757850-build.zip"
         }
       },
       "auth": {
         "mlbstatsviz2a5939be": {},
         "true": {}
+      },
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "d32kpboxvg647v",
+          "type": "cicd"
+        }
       }
     }
   }

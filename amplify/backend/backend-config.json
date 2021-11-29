@@ -26,6 +26,20 @@
       "providerPlugin": "awscloudformation",
       "service": "Lambda",
       "dependsOn": []
+    },
+    "GetStatcastData": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "storage",
+          "resourceName": "images",
+          "attributes": [
+            "BucketName"
+          ]
+        }
+      ]
     }
   },
   "api": {
@@ -50,6 +64,14 @@
         {
           "category": "function",
           "resourceName": "GetPlayer",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        },
+        {
+          "category": "function",
+          "resourceName": "GetStatcastData",
           "attributes": [
             "Name",
             "Arn"
@@ -92,6 +114,13 @@
       "service": "S3",
       "providerPlugin": "awscloudformation",
       "dependsOn": []
+    }
+  },
+  "hosting": {
+    "amplifyhosting": {
+      "service": "amplifyhosting",
+      "type": "cicd",
+      "lastPushTimeStamp": "2021-11-28T22:44:13.659Z"
     }
   }
 }

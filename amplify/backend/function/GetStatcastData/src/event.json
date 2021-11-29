@@ -1,0 +1,151 @@
+{
+   "resource":"/player/{player-id}/statcast",
+   "path":"/player/608369/statcast",
+   "httpMethod":"GET",
+   "headers":{
+      "Accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+      "Accept-Encoding":"gzip, deflate, br",
+      "Accept-Language":"en-US,en;q=0.9,ja;q=0.8",
+      "CloudFront-Forwarded-Proto":"https",
+      "CloudFront-Is-Desktop-Viewer":"true",
+      "CloudFront-Is-Mobile-Viewer":"false",
+      "CloudFront-Is-SmartTV-Viewer":"false",
+      "CloudFront-Is-Tablet-Viewer":"false",
+      "CloudFront-Viewer-Country":"CA",
+      "Cookie":"__utma=127103750.1849193939.1638035009.1638035009.1638035009.1; __utmc=127103750; __utmz=127103750.1638035009.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); awsccc=eyJlIjoxLCJwIjoxLCJmIjoxLCJhIjoxLCJpIjoiMTczYTVkY2YtM2E4NC00M2ZkLTk3ZmUtZGUxY2FlM2RkZDYwIiwidiI6IjEifQ==",
+      "Host":"zczfd4vcaf.execute-api.us-west-2.amazonaws.com",
+      "sec-ch-ua":"\"Google Chrome\";v=\"95\", \"Chromium\";v=\"95\", \";Not A Brand\";v=\"99\"",
+      "sec-ch-ua-mobile":"?0",
+      "sec-ch-ua-platform":"\"macOS\"",
+      "sec-fetch-dest":"document",
+      "sec-fetch-mode":"navigate",
+      "sec-fetch-site":"none",
+      "sec-fetch-user":"?1",
+      "upgrade-insecure-requests":"1",
+      "User-Agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.54 Safari/537.36",
+      "Via":"2.0 a02a98c09aaf2561c8ca019e473cf173.cloudfront.net (CloudFront)",
+      "X-Amz-Cf-Id":"G675Q15OuKHGzGXb-6JMBzZ5W6J6M8ZabgmQ0b7GR4LqNbZ2csuoaQ==",
+      "X-Amzn-Trace-Id":"Root=1-61a2f3d3-7a5381944557447f742b15d3",
+      "X-Forwarded-For":"154.20.22.250, 130.176.132.170",
+      "X-Forwarded-Port":"443",
+      "X-Forwarded-Proto":"https"
+   },
+   "multiValueHeaders":{
+      "Accept":[
+         "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9"
+      ],
+      "Accept-Encoding":[
+         "gzip, deflate, br"
+      ],
+      "Accept-Language":[
+         "en-US,en;q=0.9,ja;q=0.8"
+      ],
+      "CloudFront-Forwarded-Proto":[
+         "https"
+      ],
+      "CloudFront-Is-Desktop-Viewer":[
+         "true"
+      ],
+      "CloudFront-Is-Mobile-Viewer":[
+         "false"
+      ],
+      "CloudFront-Is-SmartTV-Viewer":[
+         "false"
+      ],
+      "CloudFront-Is-Tablet-Viewer":[
+         "false"
+      ],
+      "CloudFront-Viewer-Country":[
+         "CA"
+      ],
+      "Cookie":[
+         "__utma=127103750.1849193939.1638035009.1638035009.1638035009.1; __utmc=127103750; __utmz=127103750.1638035009.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); awsccc=eyJlIjoxLCJwIjoxLCJmIjoxLCJhIjoxLCJpIjoiMTczYTVkY2YtM2E4NC00M2ZkLTk3ZmUtZGUxY2FlM2RkZDYwIiwidiI6IjEifQ=="
+      ],
+      "Host":[
+         "zczfd4vcaf.execute-api.us-west-2.amazonaws.com"
+      ],
+      "sec-ch-ua":[
+         "\"Google Chrome\";v=\"95\", \"Chromium\";v=\"95\", \";Not A Brand\";v=\"99\""
+      ],
+      "sec-ch-ua-mobile":[
+         "?0"
+      ],
+      "sec-ch-ua-platform":[
+         "\"macOS\""
+      ],
+      "sec-fetch-dest":[
+         "document"
+      ],
+      "sec-fetch-mode":[
+         "navigate"
+      ],
+      "sec-fetch-site":[
+         "none"
+      ],
+      "sec-fetch-user":[
+         "?1"
+      ],
+      "upgrade-insecure-requests":[
+         "1"
+      ],
+      "User-Agent":[
+         "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.54 Safari/537.36"
+      ],
+      "Via":[
+         "2.0 a02a98c09aaf2561c8ca019e473cf173.cloudfront.net (CloudFront)"
+      ],
+      "X-Amz-Cf-Id":[
+         "G675Q15OuKHGzGXb-6JMBzZ5W6J6M8ZabgmQ0b7GR4LqNbZ2csuoaQ=="
+      ],
+      "X-Amzn-Trace-Id":[
+         "Root=1-61a2f3d3-7a5381944557447f742b15d3"
+      ],
+      "X-Forwarded-For":[
+         "154.20.22.250, 130.176.132.170"
+      ],
+      "X-Forwarded-Port":[
+         "443"
+      ],
+      "X-Forwarded-Proto":[
+         "https"
+      ]
+   },
+   "queryStringParameters":"None",
+   "multiValueQueryStringParameters":"None",
+   "pathParameters":{
+      "player-id":"608369"
+   },
+   "stageVariables":"None",
+   "requestContext":{
+      "resourceId":"2evej5",
+      "resourcePath":"/team/{team}/stadium",
+      "httpMethod":"GET",
+      "extendedRequestId":"JfsJEHj7vHcF6XQ=",
+      "requestTime":"28/Nov/2021:03:13:23 +0000",
+      "path":"/dev/team/123/stadium",
+      "accountId":"706698525731",
+      "protocol":"HTTP/1.1",
+      "stage":"dev",
+      "domainPrefix":"zczfd4vcaf",
+      "requestTimeEpoch":1638069203431,
+      "requestId":"0b2acfbf-98d0-4b66-bfdd-c704c45781c5",
+      "identity":{
+         "cognitoIdentityPoolId":"None",
+         "accountId":"None",
+         "cognitoIdentityId":"None",
+         "caller":"None",
+         "sourceIp":"154.20.22.250",
+         "principalOrgId":"None",
+         "accessKey":"None",
+         "cognitoAuthenticationType":"None",
+         "cognitoAuthenticationProvider":"None",
+         "userArn":"None",
+         "userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.54 Safari/537.36",
+         "user":"None"
+      },
+      "domainName":"zczfd4vcaf.execute-api.us-west-2.amazonaws.com",
+      "apiId":"zczfd4vcaf"
+   },
+   "body":"None",
+   "isBase64Encoded":false
+}
