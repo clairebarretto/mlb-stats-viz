@@ -9,14 +9,12 @@
 
     <v-card-text>
       <TitleBar title="Summary" />
-      <Loading v-if="!statcast.length" />
+      <StatsSimple :statcast="statcast" />
 
       <TitleBar title="Season Average" />
-      <Loading v-if="!statcast.length" />
 
       <TitleBar title="Spray Chart" />
-      <Loading v-if="!statcast.length" />
-      <Stadium v-if="statcast.length" :team="meta.TeamShort" :statcast="statcast" />
+      <Stadium :team="meta.TeamShort" :statcast="statcast" />
 
       <TitleBar title="Pitch Type" />
     </v-card-text>
@@ -28,8 +26,8 @@ import { API } from 'aws-amplify';
 import Actionshot from '@/components/CompareCard/Actionshot'
 import Headshot from '@/components/CompareCard/Headshot'
 import Bio from '@/components/CompareCard/Bio'
-import Loading from '@/components/CompareCard/Loading'
 import Stadium from '@/components/Viz/Stadium'
+import StatsSimple from '@/components/Viz/StatsSimple'
 import TitleBar from '@/components/CompareCard/TitleBar'
 
 export default {
@@ -41,8 +39,8 @@ export default {
     Actionshot,
     Headshot,
     Bio,
-    Loading,
     Stadium,
+    StatsSimple,
     TitleBar
   },
 

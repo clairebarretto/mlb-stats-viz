@@ -1,5 +1,6 @@
 <template>
-  <div v-if="hits && locations.outfield_inner.length" class="text-center">
+  <Loading v-if="!statcast.length || !locations.outfield_inner.length" />
+  <div v-else class="text-center">
     <StadiumHitFilter :filters="selected" />
     <svg
       :viewBox="getViewport()"
@@ -22,11 +23,13 @@
 
 <script>
 import { API, Hub } from 'aws-amplify';
+import Loading from '@/components/CompareCard/Loading'
 import StadiumHit from "@/components/Viz/StadiumHit";
 import StadiumHitFilter from "@/components/VizFilter/StadiumHitFilter";
 
 export default {
   components: {
+    Loading,
     StadiumHit,
     StadiumHitFilter,
   },
