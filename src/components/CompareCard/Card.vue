@@ -1,5 +1,14 @@
 <template>
   <v-card v-if="meta">
+    <v-btn
+      v-if="meta"
+      small
+      block
+      dark
+      color="grey darken-4 rounded-bl-0 rounded-br-0">
+      Switch Player
+    </v-btn>
+
     <Actionshot :meta="meta" />
     <Headshot :meta="meta" />
 
@@ -12,11 +21,14 @@
       <StatsSimple :statcast="statcast" />
 
       <TitleBar title="Season Average" />
+      <div class="text-center">TODO</div>
 
       <TitleBar title="Spray Chart" />
       <Stadium :team="meta.TeamShort" :statcast="statcast" />
 
       <TitleBar title="Pitch Type" />
+      <div class="text-center">TODO</div>
+
     </v-card-text>
   </v-card>
 </template>

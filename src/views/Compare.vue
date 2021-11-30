@@ -6,7 +6,7 @@
       colored-border
       color="grey lighten-2"
     >
-      Hello!
+      <Controls />
     </v-alert>
     <v-row>
       <v-col v-for="id in playerIds" :key="id" :cols="3" class="pt-0">
@@ -18,12 +18,14 @@
 
 <script>
 import Card from '@/components/CompareCard/Card'
+import Controls from '@/components/VizControls/Controls'
 
 export default {
   name: 'App',
 
   components: {
-    Card
+    Card,
+    Controls
   },
 
   data: () => ({
