@@ -67,7 +67,12 @@ def handler(event, context):
   }
 
 def filter_results(result):
-  events = [
+  ab_events_exclude = [
+    "walk",
+    "hit_by_pitch",
+    "sac_fly"
+  ]
+  hit_events = [
     "single",
     "double",
     "triple",
@@ -95,19 +100,122 @@ def filter_results(result):
     "pitch_name"
   ]
 
-  final = []
+  return_data = {
+    'day': {},
+    'total': {},
+    'hits': []
+  }
 
   for row in result:
-    if row.get('events') not in events:
+    event = row.get('events')
+    day = row.get('game_date')
+
+    if not event:
       continue
 
-    temp = {}
-    for key, val in row.items():
-      if key in fields:
-        temp[key] = val
-    final.append(temp)
+    # By day
+    if day not in return_data['day']:
+      return_data['day'][day] = {}
+    if event not in return_data['day'][day]:
+      return_data['day'][day][event] = 0
+    if 'hit' not in return_data['day'][day]:
+      return_data['day'][day]['hit'] = 0
+    if 'pa' not in return_data['day'][day]:
+      return_data['day'][day]['ab'] = 0
+      return_data['day'][day]['pa'] = 0
+    return_data['day'][day][event] += 1
+    return_data['day'][day]['pa'] += 1
 
-  return final
+    # Total
+    if event not in return_data['total']:
+      return_data['total'][event] = 0
+    if 'hit' not in return_data['total']:
+      return_data['total']['hit'] = 0
+    if 'pa' not in return_data['total']:
+      return_data['total']['ab'] = 0
+      return_data['total']['pa'] = 0
+    return_data['total'][event] += 1
+    return_data['total']['pa'] += 1
+
+    # At bats
+    if event not in ab_events_exclude:
+      return_data['day'][day]['ab'] += 1
+      return_data['total']['ab'] += 1
+
+    # Hits
+    if event in hit_events:
+      return_data['day'][day]['hit'] += 1
+      return_data['total']['hit'] += 1
+
+      filtered = {}
+      for key, val in row.items():
+        if key in fields:
+          filtered[key] = val
+      return_data['hits'].append(filtered)
+
+  # Total averages
+  return_data['total']['g'] = compute_metric('g', return_data['days'])
+  return_data['total']['avg'] = compute_metric('avg', return_data['total'])
+  return_data['total']['slg'] = compute_metric('slg', return_data['total'])
+  return_data['total']['obp'] = compute_metric('obp', return_data['total'])
+  return_data['total']['ops'] = compute_metric('ops', return_data['total'])
+
+  return return_data
+
+
+def compute_metric(metric, stats):
+  """
+
+  """
+  value = ''
+
+  # https://www.mlb.com/glossary/standard-stats
+
+
+  ab = stats.get('ab') or 0
+  bb = stats.get('walk') or 0
+  double = stats.get('double') or 0
+  hbp = stats.get('hit_by_pitch') or 0
+  hits = stats.get('hit') or 0
+  hr = stats.get('home_run') or 0
+  obp = stats.get('obp') or 0
+  pa = stats.get('pa') or 0
+  sf = stats.get('sac_fly') or 0
+  slg = stats.get('slg') or 0
+  single = stats.get('single') or 0
+  triple = stats.get('triple') or 0
+
+  if metric == 'avg':
+    value = '0.000'
+    if hits and ab:
+      value = hits / ab
+      value = '{:.3f}'.format(value)
+
+  if metric == 'ab':
+    value = 0
+    if pa:
+      value = pa - bb - hbp - sf
+
+  if metric == 'g':
+    value = len(stats.keys())
+
+  if metric == 'obp':
+    value = '0.000'
+    if ab:
+      value = (hits + bb + hbp) / (ab + bb + hbp + sf)
+      value = '{:.3f}'.format(value)
+
+  if metric == 'slg':
+    value = '0.000'
+    if ab:
+      value = (single + (double * 2) + (triple * 3) + (hr * 4)) / ab
+      value = '{:.3f}'.format(value)
+
+  if metric == 'ops':
+    value = float(obp) + float(slg)
+    value = '{:.3f}'.format(value)
+
+  return value
 
 def get_external_stats_url(mlb_id, yyyymm):
   start_date = '2019-01-01'

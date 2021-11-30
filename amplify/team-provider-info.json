@@ -32,7 +32,7 @@
         },
         "GetStatcastData": {
           "deploymentBucketName": "amplify-mlbstatsviz-dev-92310-deployment",
-          "s3Key": "amplify-builds/GetStatcastData-67313271326f322b7279-build.zip"
+          "s3Key": "amplify-builds/GetStatcastData-696a3735347753637244-build.zip"
         },
         "ImportPlayerPhotos": {
           "deploymentBucketName": "amplify-mlbstatsviz-dev-92310-deployment",

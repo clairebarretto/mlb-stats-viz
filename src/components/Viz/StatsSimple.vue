@@ -1,5 +1,5 @@
 <template>
-  <Loading v-if="!statcast.length" />
+  <Loading v-if="!statcast" />
   <div v-else class="mt-15 mb-15">
     <v-row>
       <v-col cols="6">
@@ -9,7 +9,7 @@
             @mouseover="mouseover('g')"
             :style="getHoverColour('g')">
             <strong class="mr-2">Games: </strong>
-            <span v-if="statcast" v-text="100"></span>
+            <span>{{ statcast.g }}</span>
           </div>
         </v-row>
         <v-row justify="center">
@@ -18,7 +18,7 @@
             @mouseover="mouseover('ab')"
             :style="getHoverColour('ab')">
             <strong class="mr-2">At Bats: </strong>
-            <span v-if="statcast" v-text="500"></span>
+            <span>{{ statcast.ab }}</span>
           </div>
         </v-row>
         <v-row justify="center">
@@ -27,7 +27,7 @@
             @mouseover="mouseover('avg')"
             :style="getHoverColour('avg')">
             <strong class="mr-2">AVG: </strong>
-            <span v-if="statcast" v-text="0.001"></span>
+            <span>{{ statcast.avg }}</span>
           </div>
         </v-row>
         <v-row justify="center">
@@ -36,7 +36,7 @@
             @mouseover="mouseover('obp')"
             :style="getHoverColour('obp')">
             <strong class="mr-2">OBP: </strong>
-            <span v-if="statcast" v-text="0.001"></span>
+            <span>{{ statcast.obp }}</span>
           </div>
         </v-row>
         <v-row justify="center">
@@ -45,7 +45,7 @@
             @mouseover="mouseover('ops')"
             :style="getHoverColour('ops')">
             <strong class="mr-2">OPS: </strong>
-            <span v-if="statcast" v-text="0.001"></span>
+            <span>{{ statcast.ops }}</span>
           </div>
         </v-row>
       </v-col>
@@ -56,7 +56,7 @@
             @mouseover="mouseover('h')"
             :style="getHoverColour('h')">
             <strong class="mr-2">Hits: </strong>
-            <span v-if="statcast" v-text="events.hits"></span>
+            <span>{{ statcast.hit }}</span>
           </div>
         </v-row>
         <v-row justify="center">
@@ -65,7 +65,7 @@
             @mouseover="mouseover('1b')"
             :style="getHoverColour('1b')">
             <strong class="mr-2">1B: </strong>
-            <span v-if="statcast" v-text="events.single"></span>
+            <span>{{ statcast.single }}</span>
           </div>
         </v-row>
         <v-row justify="center">
@@ -74,7 +74,7 @@
             @mouseover="mouseover('2b')"
             :style="getHoverColour('2b')">
             <strong class="mr-2">2B: </strong>
-            <span v-if="statcast" v-text="events.double"></span>
+            <span v-text="statcast.double"></span>
           </div>
         </v-row>
         <v-row justify="center">
@@ -83,7 +83,7 @@
             @mouseover="mouseover('3b')"
             :style="getHoverColour('3b')">
             <strong class="mr-2">3B: </strong>
-            <span v-if="statcast" v-text="events.triple"></span>
+            <span v-text="statcast.triple"></span>
           </div>
         </v-row>
         <v-row justify="center">
@@ -92,7 +92,7 @@
             @mouseover="mouseover('hr')"
             :style="getHoverColour('hr')">
             <strong class="mr-2">HR: </strong>
-            <span v-if="statcast" v-text="events.home_run"></span>
+            <span v-text="statcast.home_run"></span>
           </div>
         </v-row>
       </v-col>
@@ -115,7 +115,7 @@ export default {
 
   data() {
     return {
-      selected: 'g',
+      selected: 'avg',
       events: {
         hits: 0,
         single: 0,
@@ -148,10 +148,10 @@ export default {
       });
     },
     plot() {
-      this.statcast.forEach(row => {
-        this.events[row.events]++;
-        this.events.hits++;
-      });
+      // this.statcast.forEach(row => {
+      //   this.events[row.events]++;
+      //   this.events.hits++;
+      // });
     }
   },
 

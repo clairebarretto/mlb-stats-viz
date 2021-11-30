@@ -1,5 +1,5 @@
 <template>
-  <Loading v-if="!statcast.length || !locations.outfield_inner.length" />
+  <Loading v-if="!statcast || !locations.outfield_inner.length" />
   <div v-else class="text-center">
     <StadiumHitFilter :filters="selected" />
     <svg
@@ -73,6 +73,9 @@ export default {
     },
     plot() {
       const result = [];
+      if (!this.statcast) {
+        return result;
+      }
       this.statcast.forEach((row) => {
         if (this.selected.includes(row.events)) {
           result.push(row);

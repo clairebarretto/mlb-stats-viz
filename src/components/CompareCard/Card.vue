@@ -18,13 +18,13 @@
 
       <v-card-text>
         <TitleBar title="Summary" />
-        <StatsSimple :statcast="statcast" />
+        <StatsSimple :statcast="statcast.total" />
 
         <TitleBar title="Season Average" />
         <div class="text-center">TODO</div>
 
         <TitleBar title="Spray Chart" />
-        <Stadium :team="meta.TeamShort" :statcast="statcast" />
+        <Stadium :team="meta.TeamShort" :statcast="statcast.hits" />
 
         <TitleBar title="Pitch Type" />
         <div class="text-center">TODO</div>
@@ -68,7 +68,7 @@ export default {
 
   data: () => ({
     'meta': null,
-    'statcast': []
+    'statcast': {}
   }),
 
   mounted() {
