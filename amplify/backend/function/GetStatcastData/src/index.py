@@ -12,7 +12,7 @@ def handler(event, context):
   print(event)
 
   mlb_id = event['pathParameters']['player-id']
-  yyyymm = 2019
+  yyyymm = 2021
 
   s3_bucket = 'mlbviz92310-dev'
   s3_prefix = f'statcast/players/{mlb_id}/{yyyymm}/stats.json'
@@ -154,7 +154,7 @@ def filter_results(result):
       return_data['hits'].append(filtered)
 
   # Total averages
-  return_data['total']['g'] = compute_metric('g', return_data['days'])
+  return_data['total']['g'] = compute_metric('g', return_data['day'])
   return_data['total']['avg'] = compute_metric('avg', return_data['total'])
   return_data['total']['slg'] = compute_metric('slg', return_data['total'])
   return_data['total']['obp'] = compute_metric('obp', return_data['total'])

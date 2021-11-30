@@ -21,13 +21,10 @@
         <StatsSimple :statcast="statcast.total" />
 
         <TitleBar title="Season Average" />
-        <div class="text-center">TODO</div>
+        <AverageChartWrapper :statcast="statcast.day" />
 
         <TitleBar title="Spray Chart" />
-        <Stadium :team="meta.TeamShort" :statcast="statcast.hits" />
-
-        <TitleBar title="Pitch Type" />
-        <div class="text-center">TODO</div>
+        <StadiumSprayChart :team="meta.TeamShort" :statcast="statcast.hits" />
 
       </v-card-text>
     </div>
@@ -44,10 +41,11 @@
 <script>
 import { API } from 'aws-amplify';
 import Actionshot from '@/components/CompareCard/Actionshot'
+import AverageChartWrapper from '@/components/Viz/AverageChartWrapper'
 import Bio from '@/components/CompareCard/Bio'
 import Headshot from '@/components/CompareCard/Headshot'
 import Loading from '@/components/CompareCard/Loading'
-import Stadium from '@/components/Viz/Stadium'
+import StadiumSprayChart from '@/components/Viz/StadiumSprayChart'
 import StatsSimple from '@/components/Viz/StatsSimple'
 import TitleBar from '@/components/CompareCard/TitleBar'
 
@@ -58,10 +56,11 @@ export default {
 
   components: {
     Actionshot,
+    AverageChartWrapper,
     Bio,
     Headshot,
     Loading,
-    Stadium,
+    StadiumSprayChart,
     StatsSimple,
     TitleBar,
   },
