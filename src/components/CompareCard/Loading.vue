@@ -2,7 +2,7 @@
   <v-sheet
     class="text-center"
     color="#fbfbfb"
-    height="150"
+    :height="height"
   >
     <v-progress-linear
         indeterminate
@@ -16,7 +16,12 @@
 <script>
 export default {
   name: 'Actionshot',
-  props: ['meta']
+  props: ['fill'],
+  data() {
+    return {
+      height: this.fill ? '100vh' : '150'
+    }
+  }
 }
 </script>
 

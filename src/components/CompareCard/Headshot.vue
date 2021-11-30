@@ -1,11 +1,11 @@
 <template>
-  <v-img v-if="this.meta" :src="this.meta.HeadshotPhotoUrl" class="headshot"></v-img>
+  <v-img v-if="url" :src="url" class="headshot"></v-img>
 </template>
 
 <script>
 export default {
   name: 'Actionshot',
-  props: ['meta']
+  props: ['url']
 }
 </script>
 

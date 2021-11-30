@@ -1,9 +1,0 @@
-{
-  "rds": {
-    "mlb": {
-      "database": "mlb",
-      "cluster_arn": "arn:aws:rds:us-west-2:706698525731:cluster:mlb-stats-viz",
-      "secret_arn": "arn:aws:secretsmanager:us-west-2:706698525731:secret:rds-db-credentials/cluster-NLZRMXYZHC3M4RSUC5AZDILPAY/admin-ZBaoIB"
-    }
-  }
-}

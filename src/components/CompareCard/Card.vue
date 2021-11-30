@@ -1,7 +1,6 @@
 <template>
-  <v-card v-if="meta">
+  <v-card>
     <v-btn
-      v-if="meta"
       small
       block
       dark
@@ -9,35 +8,45 @@
       Switch Player
     </v-btn>
 
-    <Actionshot :meta="meta" />
-    <Headshot :meta="meta" />
+    <div v-if="meta">
+      <Actionshot :url="meta.ActionPhotoUrl" />
+      <Headshot :url="meta.HeadshotPhotoUrl" />
 
-    <v-card-title>
-      <Bio :meta="meta" />
-    </v-card-title>
+      <v-card-title>
+        <Bio :meta="meta" />
+      </v-card-title>
 
-    <v-card-text>
-      <TitleBar title="Summary" />
-      <StatsSimple :statcast="statcast" />
+      <v-card-text>
+        <TitleBar title="Summary" />
+        <StatsSimple :statcast="statcast" />
 
-      <TitleBar title="Season Average" />
-      <div class="text-center">TODO</div>
+        <TitleBar title="Season Average" />
+        <div class="text-center">TODO</div>
 
-      <TitleBar title="Spray Chart" />
-      <Stadium :team="meta.TeamShort" :statcast="statcast" />
+        <TitleBar title="Spray Chart" />
+        <Stadium :team="meta.TeamShort" :statcast="statcast" />
 
-      <TitleBar title="Pitch Type" />
-      <div class="text-center">TODO</div>
+        <TitleBar title="Pitch Type" />
+        <div class="text-center">TODO</div>
 
-    </v-card-text>
+      </v-card-text>
+    </div>
+    <div v-else>
+      <Actionshot />
+
+      <v-card-text>
+        <Loading fill="true" />
+      </v-card-text>
+    </div>
   </v-card>
 </template>
 
 <script>
 import { API } from 'aws-amplify';
 import Actionshot from '@/components/CompareCard/Actionshot'
-import Headshot from '@/components/CompareCard/Headshot'
 import Bio from '@/components/CompareCard/Bio'
+import Headshot from '@/components/CompareCard/Headshot'
+import Loading from '@/components/CompareCard/Loading'
 import Stadium from '@/components/Viz/Stadium'
 import StatsSimple from '@/components/Viz/StatsSimple'
 import TitleBar from '@/components/CompareCard/TitleBar'
@@ -49,11 +58,12 @@ export default {
 
   components: {
     Actionshot,
-    Headshot,
     Bio,
+    Headshot,
+    Loading,
     Stadium,
     StatsSimple,
-    TitleBar
+    TitleBar,
   },
 
   data: () => ({
