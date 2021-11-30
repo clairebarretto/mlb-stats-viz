@@ -1,5 +1,6 @@
 <template>
-  <div class="text-center">
+  <div v-if="hits && locations.outfield_inner.length" class="text-center">
+    <StadiumHitFilter :filters="selected" />
     <svg
       :viewBox="getViewport()"
       height="100%"
@@ -7,7 +8,6 @@
       class="stadium"
       xmlns="http://www.w3.org/2000/svg">
 
-      <!-- Stadium outline -->
       <polygon class="outfield_outer" :points="locations.outfield_outer" />
       <polygon class="outfield_inner" :points="locations.outfield_inner" />
       <polyline class="foul_lines" :points="locations.foul_lines" />
@@ -21,69 +21,79 @@
 </template>
 
 <script>
-import { API } from 'aws-amplify';
+import { API, Hub } from 'aws-amplify';
 import StadiumHit from "@/components/Viz/StadiumHit";
+import StadiumHitFilter from "@/components/VizFilter/StadiumHitFilter";
 
 export default {
-    components: {
-      StadiumHit
-    },
-    props: ['statcast', 'team'],
-    data() {
-      return {
-        width: 250,
-        height: 250,
-        hits: [],
-        locations: {
-          infield_inner: [],
-          infield_outer: [],
-          outfield_outer: [],
-          outfield_inner: [],
-          foul_lines: [],
-          home_plate: []
-        }
-      }
-    },
-    methods: {
-      getStadiumDimensions() {
-        const apiName = 'GetStadiumDimensions';
-        const path = `/team/${this.team}/stadium`;
-
-        API.get(apiName, path)
-          .then(response => {
-            response.forEach(row => {
-              this.locations[row.Segment].push(`${row.X},${row.Y}`);
-            });
-            Object.keys(this.locations).map(key => {
-              this.locations[key] = this.locations[key].join(' ');
-            });
-          })
-          .catch(error => {
-            console.log(error);
-        });
-      },
-      getViewport() {
-        return `0 0 ${this.width} ${this.height}`;
-      },
-      plot() {
-        const result = [];
-        this.statcast.forEach((row) => {
-          if (row.hc_x > 0 && row.hc_y > 0) {
-            result.push(row);
-          }
-        });
-        this.hits = result;
-      }
-    },
-    mounted () {
-      this.getStadiumDimensions();
-      this.plot();
-    },
-    watch: {
-      statcast() {
-        this.plot()
+  components: {
+    StadiumHit,
+    StadiumHitFilter,
+  },
+  props: ['statcast', 'team'],
+  data() {
+    return {
+      selected: ['single', 'double', 'triple', 'home_run'],
+      width: 250,
+      height: 250,
+      hits: [],
+      locations: {
+        infield_inner: [],
+        infield_outer: [],
+        outfield_outer: [],
+        outfield_inner: [],
+        foul_lines: [],
+        home_plate: []
       }
     }
+  },
+  methods: {
+    getStadiumDimensions() {
+      const apiName = 'GetStadiumDimensions';
+      const path = `/team/${this.team}/stadium`;
+
+      API.get(apiName, path)
+        .then(response => {
+          response.forEach(row => {
+            this.locations[row.Segment].push(`${row.X},${row.Y}`);
+          });
+          Object.keys(this.locations).map(key => {
+            this.locations[key] = this.locations[key].join(' ');
+          });
+        })
+        .catch(error => {
+          console.log(error);
+      });
+    },
+    getViewport() {
+      return `0 0 ${this.width} ${this.height}`;
+    },
+    plot() {
+      const result = [];
+      this.statcast.forEach((row) => {
+        if (this.selected.includes(row.events)) {
+          result.push(row);
+        }
+      });
+      this.hits = result;
+    }
+  },
+  mounted () {
+    this.getStadiumDimensions();
+    this.plot();
+
+    Hub.listen('Filter', data => {
+      if (this.selected != data.payload.data) {
+        this.selected = data.payload.data;
+        this.plot();
+      }
+    });
+  },
+  watch: {
+    statcast() {
+      this.plot()
+    }
+  }
 }
 </script>
 

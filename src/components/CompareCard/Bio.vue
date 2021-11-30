@@ -9,11 +9,11 @@
       <div class="meta">
         <div>
           <strong>Born:</strong> {{ this.meta.Birthday }}
-          ({{ calculateYearsFromToday(this.meta.Birthday) }})
+          <small>({{ calculateYearsFromToday(this.meta.Birthday) }})</small>
         </div>
         <div>
           <strong>MLB Debut:</strong> {{ this.meta.Debut }}
-          ({{ calculateYearsFromToday(this.meta.Debut) }})
+          <small>({{ calculateYearsFromToday(this.meta.Debut) }}yr)</small>
         </div>
         <div>
           <strong>Bats:</strong> {{ formatHandedness(this.meta.Bats) }}
