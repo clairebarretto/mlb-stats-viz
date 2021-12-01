@@ -28,7 +28,7 @@
         },
         "GetPlayer": {
           "deploymentBucketName": "amplify-mlbstatsviz-dev-92310-deployment",
-          "s3Key": "amplify-builds/GetPlayer-724a7536765462384b41-build.zip"
+          "s3Key": "amplify-builds/GetPlayer-767966446d576d47416a-build.zip"
         },
         "GetStatcastData": {
           "deploymentBucketName": "amplify-mlbstatsviz-dev-92310-deployment",
@@ -36,7 +36,7 @@
         },
         "ImportPlayerPhotos": {
           "deploymentBucketName": "amplify-mlbstatsviz-dev-92310-deployment",
-          "s3Key": "amplify-builds/ImportPlayerPhotos-7a66467049494f757850-build.zip"
+          "s3Key": "amplify-builds/ImportPlayerPhotos-4a74416d316a2f68772b-build.zip"
         }
       },
       "auth": {
