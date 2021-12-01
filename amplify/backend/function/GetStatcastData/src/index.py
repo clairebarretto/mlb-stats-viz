@@ -14,7 +14,7 @@ def handler(event, context):
   result = []
 
   mlb_id = event.get('pathParameters', {}).get('player-id')
-  
+
   year = datetime.datetime.today().year
   if event.get('queryStringParameters') and event['queryStringParameters'].get('year'):
     year = event['queryStringParameters']['year']
