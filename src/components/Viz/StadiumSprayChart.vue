@@ -18,6 +18,13 @@
 
       <StadiumHit v-for="(row, index) in hits" :key="index" v-bind:hit="row" />
     </svg>
+    <div v-if="stadium" class="text-center">
+      <small>HOME FIELD</small>
+      <br/>
+      <strong>{{ stadium }}</strong>
+      <br/>
+      {{ city }}
+    </div>
   </div>
 </template>
 
@@ -40,6 +47,8 @@ export default {
       width: 250,
       height: 250,
       hits: [],
+      stadium: '',
+      city: '',
       locations: {
         infield_inner: [],
         infield_outer: [],
@@ -52,13 +61,12 @@ export default {
   },
   methods: {
     getStadiumDimensions() {
-      const apiName = 'GetStadiumDimensions';
-      const path = `/team/${this.team}/stadium`;
-
-      API.get(apiName, path)
+      API.get('GetStadiumDimensions', `/team/${this.team}/stadium`)
         .then(response => {
           response.forEach(row => {
             this.locations[row.Segment].push(`${row.X},${row.Y}`);
+            this.stadium = row.Name;
+            this.city = row.Location;
           });
           Object.keys(this.locations).map(key => {
             this.locations[key] = this.locations[key].join(' ');
@@ -78,7 +86,9 @@ export default {
       }
       this.statcast.forEach((row) => {
         if (this.selected.includes(row.events)) {
-          result.push(row);
+          if (row.hc_x && row.hc_y) {
+            result.push(row);
+          }
         }
       });
       this.hits = result;

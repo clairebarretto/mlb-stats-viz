@@ -1,14 +1,17 @@
 <template>
-    <AverageChart class="chart" :data="chartData" />
+  <Loading v-if="!statcast" />
+  <AverageChart v-else class="chart" :data="chartData" />
 </template>
 <script>
 import AverageChart from "@/components/Viz/AverageChart";
+import Loading from "@/components/CompareCard/Loading";
 
 export default {
   name: 'AvergeChartWrapper',
   props: ['statcast'],
   components: {
-      AverageChart
+      AverageChart,
+      Loading
   },
   data () {
     return {
@@ -36,8 +39,6 @@ export default {
             y: avg
           })
         });
-
-        console.log(this.chartData);
       }
     }
   },

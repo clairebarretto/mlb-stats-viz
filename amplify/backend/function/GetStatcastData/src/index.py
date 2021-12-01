@@ -3,10 +3,7 @@ import calendar
 import csv
 import datetime
 import json
-import io
-import os
 import requests
-import time
 import urllib
 
 S3 = boto3.resource('s3')
@@ -17,7 +14,7 @@ def handler(event, context):
   result = []
 
   mlb_id = event['pathParameters'].get('player-id')
-  year = event['pathParameters'].get('year') or 2019
+  year = event['queryStringParameters'].get('year') or 2019
 
   # TODO: Move to .env
   s3_bucket = 'mlbviz92310-dev'
@@ -276,7 +273,7 @@ def generate_external_stats_url(mlb_id, year):
   start_date = datetime.datetime.today().replace(
     year=year, month=1, day=calendar.monthrange(year, 1)[0])
   end_date = datetime.datetime.today().replace(
-    year=year, month=9, day=calendar.monthrange(year, 9)[1])
+    year=year, month=10, day=calendar.monthrange(year, 9)[1])
 
   params = {
     'all': 'true',

@@ -32,8 +32,8 @@ export default {
   props: ['filters'],
   data() {
     return {
-      seasons: ['2019'],
-      season: '2019',
+      seasons: ['2021'],
+      season: '2021',
       player_counts: ['4'],
       player_count: '4'
     }

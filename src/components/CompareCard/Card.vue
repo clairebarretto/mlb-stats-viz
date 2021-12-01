@@ -81,9 +81,13 @@ export default {
         console.log(error);
     });
 
-    API.get(apiName, `/player/${this.id}/statcast`)
+    const config = {
+      queryStringParameters: {
+        year: '2021',
+      },
+    };
+    API.get(apiName, `/player/${this.id}/statcast`, config)
       .then(response => {
-        console.log(response);
         this.statcast = response;
       })
       .catch(error => {
