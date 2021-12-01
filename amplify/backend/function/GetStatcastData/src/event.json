@@ -113,7 +113,8 @@
    "queryStringParameters":"None",
    "multiValueQueryStringParameters":"None",
    "pathParameters":{
-      "player-id":"608369"
+      "player-id":"608369",
+      "year":"2021"
    },
    "stageVariables":"None",
    "requestContext":{
