@@ -13,8 +13,8 @@ def handler(event, context):
 
   result = []
 
-  mlb_id = event['pathParameters'].get('player-id')
-  year = event['queryStringParameters'].get('year') or 2019
+  mlb_id = event.get('pathParameters', {}).get('player-id')
+  year = event.get('queryStringParameters', {}).get('year') or 2019
 
   # TODO: Move to .env
   s3_bucket = 'mlbviz92310-dev'
