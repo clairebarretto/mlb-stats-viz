@@ -47,6 +47,7 @@
 import { Hub } from 'aws-amplify';
 
 export default {
+  name: 'StadiumHitFilter',
   props: ['filters'],
   data() {
     return {
@@ -55,7 +56,7 @@ export default {
   },
   methods: {
     change() {
-      Hub.dispatch('Filter', {
+      Hub.dispatch('StadiumHitFilter', {
         data : this.selected
       });
     }

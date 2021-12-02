@@ -193,7 +193,9 @@ def filter_results(result: list) -> dict:
     "launch_angle",
     "effective_speed",
     "launch_speed_angle",
-    "pitch_name"
+    "pitch_name",
+    "home_team",
+    "away_team"
   ]
 
   for row in result:
