@@ -54,22 +54,7 @@ export default {
           }],
         },
         tooltips: {
-          mode: 'x-axis',
-          position: 'custom',
-          backgroundColor: '#9E9E9E',
-          bodyFontColor: '#fff',
-          titleFontColor: '#fff',
-          caretSize: 0,
-          callbacks: {
-            label: function(tooltipItem, data) {
-              var label = data.datasets[tooltipItem.datasetIndex].label || '';
-              if (label) {
-                label += ': ';
-              }
-              label += parseFloat(tooltipItem.value).toFixed(3);
-              return ' ' + label;
-            }
-          }
+          mode: 'x-axis'
         },
         legend: {
           display: true,

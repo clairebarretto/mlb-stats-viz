@@ -33,8 +33,8 @@ export default {
     }
   },
   watch: {
-    filters() {
-      this.selected = this.filters;
+    location_type() {
+      this.selected = this.location_type;
     }
   }
 }

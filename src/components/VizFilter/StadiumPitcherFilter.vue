@@ -33,8 +33,8 @@ export default {
     }
   },
   watch: {
-    filters() {
-      this.selected = this.filters;
+    pitcher_type() {
+      this.selected = this.pitcher_type;
     }
   }
 }

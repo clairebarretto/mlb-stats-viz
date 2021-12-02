@@ -169,7 +169,7 @@ export default {
         this.location_type = data.payload.data;
         if (this.location_type == 'away') {
           this.ballpark = this.ballpark_away;
-          console.log(this.ballpark)
+          console.log(this.location_type)
         } else {
           this.ballpark = this.ballpark_home;
         }
