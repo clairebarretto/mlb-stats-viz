@@ -8,19 +8,14 @@
 </template>
 
 <script>
-import Compare from './views/Compare';
-import Header from './components/Header';
+import Compare from '@/views/Compare';
+import Header from '@/components/Header';
 
 export default {
   name: 'App',
-
   components: {
     Compare,
     Header
-  },
-
-  data: () => ({
-    //
-  }),
+  }
 };
 </script>

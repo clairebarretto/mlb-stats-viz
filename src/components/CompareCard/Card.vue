@@ -17,7 +17,7 @@
       </v-card-title>
 
       <v-card-text>
-        <TitleBar title="Summary" />
+        <TitleBar title="Summary" subtitle="2021" />
         <StatsSimple :statcast="statcast.total" />
 
         <TitleBar title="Season Average" />
@@ -39,7 +39,7 @@
 </template>
 
 <script>
-import { API } from 'aws-amplify';
+import { API, Hub } from 'aws-amplify';
 import Actionshot from '@/components/CompareCard/Actionshot'
 import AverageChartWrapper from '@/components/Viz/AverageChartWrapper'
 import Bio from '@/components/CompareCard/Bio'
@@ -66,33 +66,52 @@ export default {
   },
 
   data: () => ({
-    'meta': null,
-    'statcast': {}
+    meta: null,
+    season: null,
+    statcast: {}
   }),
 
   mounted() {
-    const apiName = 'GetPlayer';
+    this.getPlayer();
+    this.getPlayerStatcast();
 
-    API.get(apiName, `/player/${this.id}`)
-      .then(response => {
-        this.meta = response;
-      })
-      .catch(error => {
-        console.log(error);
-    });
-
-    const config = {
-      queryStringParameters: {
-        year: '2021',
-      },
-    };
-    API.get(apiName, `/player/${this.id}/statcast`, config)
-      .then(response => {
-        this.statcast = response;
-      })
-      .catch(error => {
-        console.log(error);
+    Hub.listen('SeasonFilter', data => {
+      this.season = data.payload.data;
+      localStorage.setItem('mlb_stats_viz_season', this.season);
     });
   },
+
+  methods: {
+    getPlayer() {
+      API.get('GetPlayer', `/player/${this.id}`)
+        .then(response => {
+          this.meta = response;
+        })
+        .catch(error => {
+          console.log(error);
+      });
+    },
+    getPlayerStatcast() {
+      const config = {
+        queryStringParameters: {
+          year: localStorage.getItem('mlb_stats_viz_season') || 2021,
+        },
+      };
+      API.get('GetPlayer', `/player/${this.id}/statcast`, config)
+        .then(response => {
+          this.statcast = response;
+        })
+        .catch(error => {
+          console.log(error);
+      });
+    }
+  },
+
+  watch: {
+    season() {
+      this.statcast = {};
+      this.getPlayerStatcast();
+    }
+  }
 };
 </script>

@@ -13,7 +13,7 @@ export default {
   .headshot {
     width: 80px;
     height: 110px;
-    border: 2px solid white;
+    border: 2px solid #fff;
     top: -20px;
     right: 20px;
     float: right;

@@ -21,6 +21,8 @@ export default {
   methods: {
     plot() {
       if (this.statcast) {
+        this.chartData = [];
+
         let hits = 0;
         let ab = 0;
 

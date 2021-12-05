@@ -278,7 +278,7 @@ def generate_external_stats_url(mlb_id, year):
   start_date = datetime.datetime.today().replace(
     year=year, month=1, day=calendar.monthrange(year, 1)[0])
   end_date = datetime.datetime.today().replace(
-    year=year, month=10, day=calendar.monthrange(year, 9)[1])
+    year=year, month=10, day=calendar.monthrange(year, 10)[1])
 
   params = {
     'all': 'true',
